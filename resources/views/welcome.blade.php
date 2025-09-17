@@ -6,11 +6,11 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
+        <!-- Fontes -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
-        <!-- Styles / Scripts -->
+        <!-- Estilos / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
         @else
@@ -51,17 +51,28 @@
         </header>
         
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-center w-full p-6 lg:p-8">
-                    <h1 class="text-4xl font-bold text-gray-800 dark:text-white">
-                        Finance App
-                    </h1>
-                    <p class="mt-4 text-gray-600 dark:text-gray-400">
-                        Sua plataforma para gerenciar investimentos em ações.
-                    </p>
-                </div>
-            </main>
+    <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
+        
+        <!-- Texto -->
+        <div class="text-center w-full p-6 lg:p-8">
+            <h1 class="text-4xl font-bold text-gray-800 dark:text-white">
+                Finance App
+            </h1>
+            <p class="mt-4 text-gray-600 dark:text-gray-400">
+                Sua plataforma para gerenciar investimentos em ações.
+            </p>
         </div>
+
+        <!-- Imagem -->
+        <div class="flex justify-center items-center w-full p-6 lg:p-8">
+            <img src="{{ asset('images/imagem1.jpg') }}" 
+                alt="Finance App" 
+                class="w-4/5 sm:w-3/4 lg:w-2/3 xl:w-1/2 h-auto">
+        </div>
+
+    </main>
+</div>
+
 
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
