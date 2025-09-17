@@ -11,42 +11,60 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <form action="{{ route('stocks.consultar') }}" method="POST">
                         @csrf
-                        <div class="mb-4">
-                            <label for="symbol" class="block text-gray-700 text-sm font-bold mb-2">
-                                Símbolo da Ação (ex: PETR4)
-                            </label>
-                            <input type="text" name="symbol" id="symbol" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+
+                        <div class="flex items-end gap-x-4">
+
+                            <div class="flex-grow">
+                                <label for="symbol" class="block text-gray-700 text-sm font-bold mb-2">
+                                    Símbolo da Ação (ex: PETR4, VALE3)
+                                </label>
+                                <input type="text" name="symbol" id="symbol" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+                            </div>
+
+                            <div>
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                                    Consultar
+                                </button>
+                            </div>
+
                         </div>
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                            Consultar
-                        </button>
                     </form>
 
                     @if (isset($stock))
-                        <div class="mt-8 p-4 bg-gray-100 rounded-lg">
-                            <h3 class="text-lg font-bold">Cotação da Ação</h3>
-                            <p class="mt-2">
-                                **Símbolo:** {{ $stock['symbol'] }}
-                            </p>
-                            <p>
-                                **Nome da Empresa:** {{ $stock['longName'] }}
-                            </p>
-                            <p>
-                                **Preço Atual:** R$ {{ number_format($stock['regularMarketPrice'], 2, ',', '.') }}
-                            </p>
-                            <p>
-                                **Última Atualização:** {{ $stock['regularMarketTime'] }}
-                            </p>
-                        </div>
+
+                    <div class="mt-8 p-4 bg-gray-100 rounded-lg">
+                        <h3 class="text-lg font-bold mb-4">Cotação da Ação</h3>
+                        <table class="w-full text-left">
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="py-2 pr-4 font-semibold text-gray-700">Símbolo</td>
+                                    <td class="py-2 text-gray-900">{{ $stock['symbol'] }}</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-2 pr-4 font-semibold text-gray-700">Nome da Empresa</td>
+                                    <td class="py-2 text-gray-900">{{ $stock['longName'] }}</td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-2 pr-4 font-semibold text-gray-700">Preço Atual</td>
+                                    <td class="py-2 text-gray-900">R$ {{ number_format($stock['regularMarketPrice'], 2, ',', '.') }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 pr-4 font-semibold text-gray-700">Última Atualização</td>
+                                    <td class="py-2 text-gray-900">{{ $stock['regularMarketTime'] }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                     @endif
 
                     @if (session('error'))
-                        <div class="mt-8 p-4 bg-red-100 rounded-lg text-red-700">
-                            {{ session('error') }}
-                        </div>
+                    <div class="mt-8 p-4 bg-red-100 rounded-lg text-red-700">
+                        {{ session('error') }}
+                    </div>
                     @endif
                 </div>
             </div>
         </div>
     </div>
+
 </x-app-layout>

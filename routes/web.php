@@ -55,4 +55,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/historico', [StockController::class, 'showHistorico'])->name('stocks.historico');
 });
 
-require __DIR__.'/auth.php';
+
+
+require __DIR__ . '/auth.php';
