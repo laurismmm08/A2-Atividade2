@@ -20,6 +20,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    // Rota para a API de busca dinâmica de ações
+    Route::get('/api/search-stocks', [StockController::class, 'search'])->name('stocks.search');
+    
     // Rota para a página de consulta (exibe o formulário)
     Route::get('/consultar', [StockController::class, 'showConsultaForm'])->name('stocks.consulta.form');
 
@@ -54,7 +57,5 @@ Route::middleware(['auth'])->group(function () {
     // Rota para a página de histórico de transações
     Route::get('/historico', [StockController::class, 'showHistorico'])->name('stocks.historico');
 });
-
-
 
 require __DIR__ . '/auth.php';
