@@ -10,16 +10,14 @@ use App\Models\Transaction;
 
 class StockController extends Controller
 {
-    /**
-     * Display a form to search for a stock.
-     */
+    //Mostra página paaraa buscar as açoes
     public function showConsultaForm()
     {
         return view('stocks.consulta');
     }
 
     /**
-     * Consult a stock price from brapi.dev API.
+     * Consulta ações API
      */
     public function consultar(Request $request)
     {
@@ -49,16 +47,16 @@ class StockController extends Controller
         }
     }
 
-    /**
-     * Display a form to buy stocks.
-     */
+    //Mostra formulario para comprar
+
     public function showCompraForm()
     {
         return view('stocks.comprar');
     }
 
     /**
-     * Process the stock purchase.
+     * Process the stock purchase. 
+     * //////Comentarios em ingles ou portugues???????? Qual melhor, Qual usado?
      */
     public function comprar(Request $request)
     {
